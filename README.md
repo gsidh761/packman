@@ -5,6 +5,6 @@
 
 Simply run something like this:
 
-    notroot install [package_name]
+    packman install [package_name]
 
 This will download and extract packages.
