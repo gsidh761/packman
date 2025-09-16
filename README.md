@@ -1,4 +1,5 @@
-# Install APT & YUM packages without root access
+# Packman
+**Install APT & YUM packages without root access**
 
 ## Usage
 
