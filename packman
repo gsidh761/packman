@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# Go to this directory
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 MARKER='\033[1m[PACKMAN]\033[0m'
-cd $DIR
+cd "$DIR" || exit 1
 
-which yum 2> /dev/null >&2
-if [ $? -eq 0 ]; then
+# Detect yum
+if command -v yum >/dev/null 2>&1; then
     MODE="yum"
 else
     echo -e "$MARKER Could not find yum installed on this machine..."
@@ -14,47 +13,48 @@ else
 fi
 
 if [ $# -lt 2 ]; then
-    echo "Usage: "
+    echo "Usage:"
     echo "  packman [search|install|get] package"
     echo ""
     echo "  search package:"
-    echo "		Display the search result for a package"
+    echo "        Display the search result for a package"
     echo ""
     echo "  install packages:"
-    echo "		Installs a given package"
-    echo ""
+    echo "        Extracts a given package into the current directory"
     echo ""
     echo "  get packages:"
-    echo "		Downloads a given package but doesn't install it"
+    echo "        Downloads a given package RPM but doesn't install it"
     echo ""
     exit 1
 fi
 
 case $1 in
     search)
-        if [ "$MODE" = "yum" ]; then
-            yum search $2
-        fi
+        shift
+        echo -e "$MARKER Searching for: $*"
+        yum search "$@"
         ;;
     install)
         shift
-        for package in $*; do
-        echo -e "$MARKER Installing $package from $MODE..."
-            if [ "$MODE" = "yum" ]; then
-                rm -rf rpm
-                mkdir rpm &&
-                cd rpm &&
-                yumdownloader $package &&
-                cd .. &&
-                rpm2cpio rpm/*.rpm | cpio -idmvu
-            fi
+        for package in "$@"; do
+            echo -e "$MARKER Installing (extracting) $package..."
+            rm -rf rpm
+            mkdir rpm && cd rpm || exit 1
+            yum install --downloadonly --downloaddir=. "$package"
+            rpm2cpio ./*.rpm | cpio -idmv
+            cd ..
         done
         ;;
     get)
-        if [ "$MODE" = "yum" ]; then
-            yum search $2
-        fi
-        ;; 
+        shift
+        for package in "$@"; do
+            echo -e "$MARKER Getting $package (no deps)..."
+            rm -rf rpm
+            mkdir rpm && cd rpm || exit 1
+            yum install --downloadonly --downloaddir=. "$package"
+            cd ..
+        done
+        ;;
     *)
         echo -e "$MARKER Unknown instruction $1"
         ;;
