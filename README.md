@@ -4,6 +4,8 @@
 **Packman is a lightweight wrapper that uses YUM for search and DNF for downloads, allowing you to install packages locally in the home directory.
 This avoids the need for root privileges and keeps your system clean, ideal for shared servers or restricted environments.**
 
+**Note: Installed packages count towards your file quota limits** 
+
 ## Usage
 
 **Installation:**
