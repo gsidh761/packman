@@ -46,7 +46,7 @@ case $1 in
             echo -e "$MARKER Installing (extracting) $package..."
             cd ~/rpm || exit 1
             dnf download "$package"
-            rpm2cpio ~/*.rpm | cpio -idmv
+            rpm2cpio ~/rpm/*.rpm | cpio -idmv
             cd ..
         done
         ;;
