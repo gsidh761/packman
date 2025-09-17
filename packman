@@ -118,7 +118,7 @@ case $1 in
         fi
         
         EOF
-                echo "Packman bashrc added."
+            echo "Packman bashrc added."
             fi
         else
             echo "No bashrc found in repo."
