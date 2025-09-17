@@ -103,20 +103,24 @@ case $1 in
     done
     ;;
 
-    list)
-        PKGDIR=~/rpm
-        FILES=(~/rpm/.packman/*.files)
-    
-        # Check if any files exist
-        if [ ! -e "${FILES[0]}" ]; then
-            echo -e "$MARKER No packages have been installed."
-            break  # or exit, depending on your script
-        fi
-    
-        # List all installed packages
-        ls -l -a ~/rpm/.packman/*.files
-        ;;
+   list)
+    PACKDIR=~/rpm/.packman
+    FILES=("$PACKDIR"/*.files)
 
+    # Check if any packages exist
+    if [ ! -e "${FILES[0]}" ]; then
+        echo -e "$MARKER No packages have been installed."
+        break  # or exit depending on your script
+    fi
+
+    # Print numbered list of installed packages
+    count=1
+    for file in "${FILES[@]}"; do
+        pkg=$(basename "$file" .files)  # remove path and .files extension
+        echo "$count. $pkg"
+        ((count++))
+    done
+    ;;
 
     get)
         shift
