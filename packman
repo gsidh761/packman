@@ -104,8 +104,6 @@ case $1 in
     ;;
 
    list)
-    shift
-
     FILELIST=~/rpm/.packman/*.files
     PKGDIR=~/rpm
 
@@ -114,7 +112,6 @@ case $1 in
         continue
     fi
     echo ls -ls -a "$FILELIST"
-    done
     ;;
 
 
