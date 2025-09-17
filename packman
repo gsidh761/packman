@@ -21,7 +21,7 @@ fi
 
 if [ $# -lt 2 ]; then
     echo "Usage:"
-    echo "  packman [search|install|get|uninstall] package"
+    echo "  packman [search|install|get|uninstall|list] package"
     echo ""
     echo "  search package:"
     echo "        Display the search result for a package"
@@ -31,6 +31,10 @@ if [ $# -lt 2 ]; then
     echo ""
     echo "  get packages:"
     echo "        Downloads a given package RPM but doesn't install it"
+    echo ""
+    echo ""
+    echo "  List packages:"
+    echo "        List the installed packages"
     echo ""
     echo ""
     echo "  uninstall packages:"
@@ -96,6 +100,20 @@ case $1 in
         rm -f "$FILELIST"
 
         echo -e "$MARKER $package fully removed."
+    done
+    ;;
+
+   list)
+    shift
+
+    FILELIST=~/rpm/.packman/*.files
+    PKGDIR=~/rpm
+
+    if [ ! -f "$FILELIST" ]; then
+        echo -e "$MARKER No packages have been installed."
+        continue
+    fi
+    echo ls -ls -a "$FILELIST"
     done
     ;;
 
