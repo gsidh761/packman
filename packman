@@ -12,6 +12,12 @@ else
     exit 1
 fi
 
+# Ensure dnf exists for downloading
+if ! command -v dnf >/dev/null 2>&1; then
+    echo -e "$MARKER Could not find dnf installed on this machine (needed for downloads)."
+    exit 1
+fi
+
 if [ $# -lt 2 ]; then
     echo "Usage:"
     echo "  packman [search|install|get] package"
@@ -40,7 +46,7 @@ case $1 in
             echo -e "$MARKER Installing (extracting) $package..."
             rm -rf rpm
             mkdir rpm && cd rpm || exit 1
-            yum install --downloadonly --downloaddir=. "$package"
+            dnf download "$package"
             rpm2cpio ./*.rpm | cpio -idmv
             cd ..
         done
@@ -48,10 +54,10 @@ case $1 in
     get)
         shift
         for package in "$@"; do
-            echo -e "$MARKER Getting $package (no deps)..."
+            echo -e "$MARKER Getting $package..."
             rm -rf rpm
             mkdir rpm && cd rpm || exit 1
-            yum install --downloadonly --downloaddir=. "$package"
+            dnf download "$package"
             cd ..
         done
         ;;
