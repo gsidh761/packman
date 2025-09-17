@@ -1,0 +1,28 @@
+BASHRC_FILE="bashrc"
+TARGET_BASHRC="$HOME/.bashrc"
+
+if [ -f "$BASHRC_FILE" ]; then
+    echo "Installing bashrc..."
+    # Backup once
+    if [ -f "$TARGET_BASHRC" ]; then
+        cp "$TARGET_BASHRC" "$TARGET_BASHRC.backup.$(date +%s)"
+        echo "Existing .bashrc backed up."
+    fi
+
+    # Append only if not already added
+    if ! grep -q "### PACKMAN START ###" "$TARGET_BASHRC"; then
+        cat >> "$TARGET_BASHRC" <<'EOF'
+
+if [ -f "$HOME/packman/bashrc" ]; then
+    source "$HOME/packman/bashrc"
+fi
+
+EOF
+        echo "Packman bashrc added."
+    fi
+else
+    echo "No bashrc found in repo."
+fi
+
+echo "Installation complete!"
+source ~/.bashrc
