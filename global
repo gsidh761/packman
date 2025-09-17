@@ -1,5 +1,5 @@
 BASHRC_FILE="bashrc"
-TARGET_BASHRC="$HOME/.bashrc"
+TARGET_BASHRC="$HOME/.bashrc" 
 
 if [ -f "$BASHRC_FILE" ]; then
     echo "Installing bashrc..."
