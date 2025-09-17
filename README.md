@@ -1,5 +1,5 @@
 # Packman
-**Install APT & YUM packages without root access**
+**Install YUM packages without root access**
 
 ## Usage
 
@@ -7,4 +7,4 @@ Simply run:
 
     packman install [package_name]
 
-This will download and extract packages.
+This will download and install packages.
