@@ -33,7 +33,7 @@ if [ $# -lt 2 ]; then
     echo "        Downloads a given package RPM but doesn't install it"
     echo ""
     echo ""
-    echo "  List packages:"
+    echo "  list packages:"
     echo "        List the installed packages"
     echo ""
     echo ""
