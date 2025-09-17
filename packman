@@ -53,7 +53,7 @@ case $1 in
             dnf download "$package"
             mkdir -p ~/rpm/.packman
             touch ~/rpm/.packman/$package.files
-            rpm2cpio *.rpm | cpio -idmv | tee ~/rpm/.packman/$package.files
+            rpm2cpio *.rpm | cpio -idmv | tar -xvf package.rpm -C / | tee ~/rpm/.packman/$package.files
             cd ..
         done
         ;;
@@ -76,10 +76,8 @@ case $1 in
                 rm -f "$file"
             done < "$FILELIST"
 
-            # Remove RPMs or leftovers related to this package
             rm -f "$PKGDIR"/*"$package"*.rpm
 
-            # Optional: remove empty directories under ~/rpm
             find "$PKGDIR" -type d -empty -delete
 
             # Remove the filelist record
