@@ -54,7 +54,7 @@ case $1 in
             mkdir -p ~/rpm/.packman
             touch ~/rpm/.packman/$package.files
             rpm2cpio "$PKGDIR"/*.rpm | cpio -idmv
-            find usr etc lib bin -type f -o -type l 2>/dev/null \
+            find ~/rpm/usr ~/rpm/etc ~/rpm/lib ~/rpm/bin ~/rpm/share -type f -o -type l 2>/dev/null \
                 | sed 's|^|/|' \
                 | tee ~/rpm/.packman/$package.files
             cd ..
