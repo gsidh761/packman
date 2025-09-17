@@ -61,7 +61,7 @@ case $1 in
         done
         ;;
 
-     uninstall)
+   uninstall)
     shift
     for package in "$@"; do
         FILELIST=~/rpm/.packman/$package.files
@@ -74,13 +74,14 @@ case $1 in
 
         echo -e "$MARKER Uninstalling $package..."
 
+        # Loop through each file recorded for this package
         while read -r file; do
-            echo "$file"
             if [[ "$file" == *"$package"* ]] && [ -f "$file" ]; then
+                echo "$MARKER Removing $file"
                 rm -f "$file"
-                # Try to clean up empty parent dirs (up to ~/rpm)
+
+                # Attempt to clean up empty parent directories up to PKGDIR
                 dir=$(dirname "$file")
-                echo "$dir"
                 while [ "$dir" != "$PKGDIR" ] && [ "$dir" != "/" ]; do
                     rmdir --ignore-fail-on-non-empty "$dir" 2>/dev/null || true
                     dir=$(dirname "$dir")
@@ -88,18 +89,15 @@ case $1 in
             fi
         done < "$FILELIST"
 
-
-        done < "$FILELIST"
-
-        # Remove RPM file
+        # Remove any RPM files matching the package name
         rm -f "$PKGDIR"/*"$package"*.rpm
 
-        # Remove the filelist record
+        # Remove the file list record
         rm -f "$FILELIST"
 
         echo -e "$MARKER $package fully removed."
+    done
     ;;
-
 
 
     get)
