@@ -11,25 +11,25 @@ Note: Installed packages count towards your file quota limits
 **Installation:**
 
 1. Download Packman from Github
-2. Run ./packman install [package_name]
+2. Run `./packman install [package_name]`
 3. Run sh global.sh to run the packages from anywhere (Optional)
    
 **Run Packages:**
 1. Run the package like any other commands (e.g. ls, cd) - First you will need to run global.sh
-2. Run the package using ~/rpm/usr/local/bin/[package_name]
+2. Run the package using `~/rpm/usr/local/bin/[package_name]`
 
 **Uninstall Packages:**
 1. Cd into the Packman directory
-2. Run ./packman uninstall [package_name]
+2. Run `./packman uninstall [package_name]`
 
 **List Installed Packages:**
 1. Cd into the Packman directory
-2. Run ./packman list
+2. Run `./packman list`
 
 **Download Packages Without Installing Them:**
 1. Cd into the Packman directory
-2. Run ./packman get [package_name]
+2. Run `./packman get [package_name]`
 
 **Search For Packages:**
 1. Cd into the Packman directory
-2. Run ./packman search [package_name]
+2. Run `./packman search [package_name]`
