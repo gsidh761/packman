@@ -13,4 +13,3 @@ Simply run:
 Run the installed package (in the Packman project folder):
     ```./rpm/usr/bin/[package_name]```
 
-This will download and install packages.
