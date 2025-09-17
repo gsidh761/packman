@@ -13,7 +13,7 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
 
 **Simply run:**
 
-    packman install [package_name]
+    ./packman install [package_name]
 
 **Run the installed package (in the Packman project folder):**
     ```./rpm/usr/bin/[package_name]```
