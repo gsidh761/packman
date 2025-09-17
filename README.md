@@ -18,8 +18,8 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
 2. Run the package using ~/rpm/usr/local/bin/[package_name]
 
 **Troubleshooting:**
-Q. Command not found
-A. Just start another terminal session or restart your SSH session
+1. Q: Command not found
+1. A: Just start another terminal session or restart your SSH session
 
 **Todo:**
 1. Uninstall packages
