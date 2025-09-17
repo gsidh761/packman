@@ -18,31 +18,6 @@ if ! command -v dnf >/dev/null 2>&1; then
     echo -e "$MARKER Could not find dnf installed on this machine (needed for downloads)."
     exit 1
 fi
-
-if [ $# -lt 2 ]; then
-    echo "Usage:"
-    echo "  packman [search|install|get|uninstall|list] package"
-    echo ""
-    echo "  search package:"
-    echo "        Display the search result for a package"
-    echo ""
-    echo "  install packages:"
-    echo "        Extracts a given package into the current directory"
-    echo ""
-    echo "  get packages:"
-    echo "        Downloads a given package RPM but doesn't install it"
-    echo ""
-    echo ""
-    echo "  list packages:"
-    echo "        List the installed packages"
-    echo ""
-    echo ""
-    echo "  uninstall packages:"
-    echo "        Uninstalls a package"
-    echo ""
-    exit 1
-fi
-
 case $1 in
     search)
         shift
