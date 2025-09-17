@@ -103,16 +103,19 @@ case $1 in
     done
     ;;
 
-   list)
-    FILELIST=~/rpm/.packman/*.files
-    PKGDIR=~/rpm
-
-    if [ ! -f "$FILELIST" ]; then
-        echo -e "$MARKER No packages have been installed."
-        continue
-    fi
-    echo ls -ls -a "$FILELIST"
-    ;;
+    list)
+        PKGDIR=~/rpm
+        FILES=(~/rpm/.packman/*.files)
+    
+        # Check if any files exist
+        if [ ! -e "${FILES[0]}" ]; then
+            echo -e "$MARKER No packages have been installed."
+            break  # or exit, depending on your script
+        fi
+    
+        # List all installed packages
+        ls -l -a ~/rpm/.packman/*.files
+        ;;
 
 
     get)
