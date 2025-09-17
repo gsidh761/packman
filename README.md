@@ -22,7 +22,7 @@ Note: Installed packages count towards your file quota limits
 1. Cd into the Packman directory
 2. Run ./packman uninstall [package_name]
 
-**List Packages:**
+**List Installed Packages:**
 1. Cd into the Packman directory
 2. Run ./packman list
 
