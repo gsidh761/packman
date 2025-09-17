@@ -14,7 +14,7 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
 4. Run sh global.sh to run the packages from anywhere (Optional)
    
 **Run Packages:**
-1. Run the package like any other commands (e.g. ls, cd) `only if global.sh was run`
+1. Run the package like any other commands (e.g. ls, cd) - First you will need to run global.sh
 2. Run the package using ~/rpm/usr/local/bin/[package_name]
 
 **Todo:**
