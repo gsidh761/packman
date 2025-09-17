@@ -76,10 +76,10 @@ case $1 in
 
             # Remove extracted files
             while read -r file; do
-                rm -f "/$file"
+                rm -f "$file"
             done < "$FILELIST"
 
-            rm -f "$PKGDIR"/*"$package"*.rpm
+            rm -f "~/rpm/"$package"*.rpm
 
             find "$PKGDIR" -type d -empty -delete
 
