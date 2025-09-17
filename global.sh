@@ -2,7 +2,7 @@ BASHRC_FILE="bashrc"
 TARGET_BASHRC="$HOME/.bashrc"
 
 if [ -f "$BASHRC_FILE" ]; then
-    echo "⚙Installing bashrc..."
+    echo "Installing bashrc..."
     # Backup existing bashrc
     if [ -f "$TARGET_BASHRC" ]; then
         cp "$TARGET_BASHRC" "$TARGET_BASHRC.backup.$(date +%s)"
@@ -18,4 +18,5 @@ fi
 echo "Reloading bashrc..."
 source "$TARGET_BASHRC"
 
-echo "✨ Installation complete!"
+echo "Installation complete!"
+ 
