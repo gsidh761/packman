@@ -126,6 +126,7 @@ case $1 in
         
         echo "Installation complete!"
         source ~/.bashrc
+    ;;
 
     get)
         shift
