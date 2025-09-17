@@ -74,17 +74,21 @@ case $1 in
 
         echo -e "$MARKER Uninstalling $package..."
 
-        # Remove extracted files
         while read -r file; do
             echo "$file"
-            rm -f "$file"
-            # Try to clean up empty parent dirs (up to ~/rpm)
-            dir=$(dirname "$file")
-            echo "$dir"
-            while [ "$dir" != "$PKGDIR" ] && [ "$dir" != "/" ]; do
-                rmdir --ignore-fail-on-non-empty "$dir" 2>/dev/null || true
-                dir=$(dirname "$dir")
-            done
+            if [[ "$file" == *"$package"* ]] && [ -f "$file" ]; then
+                rm -f "$file"
+                # Try to clean up empty parent dirs (up to ~/rpm)
+                dir=$(dirname "$file")
+                echo "$dir"
+                while [ "$dir" != "$PKGDIR" ] && [ "$dir" != "/" ]; do
+                    rmdir --ignore-fail-on-non-empty "$dir" 2>/dev/null || true
+                    dir=$(dirname "$dir")
+                done
+            fi
+        done < "$FILELIST"
+
+
         done < "$FILELIST"
 
         # Remove RPM file
