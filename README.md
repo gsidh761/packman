@@ -11,6 +11,13 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
 1. Download Packman from Github
 2. Run `mkdir rpm` in the home directory ~/
 3. Run ./packman install [package_name]
+4. Run sh global.sh to run the packages from anywhere (Optional)
+
+**Run Packages:**
+Run the package like any other commands (e.g. ls, cd) `only if the global.sh file was run`
+or
+Run the package using ~/rpm/usr/local/bin/[package_name]
+
 
 **Todo:**
 1. Uninstall packages
