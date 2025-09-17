@@ -7,7 +7,7 @@ Simply run:
 
     packman install [package_name]
 
-Run the downloaded package:
+Run the installed package (in the Packman project folder):
     ```./rpm/usr/bin/[package_name]```
 
 This will download and install packages.
