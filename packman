@@ -107,15 +107,18 @@ case $1 in
             if [ -f "$TARGET_BASHRC" ]; then
                 cp "$TARGET_BASHRC" "$TARGET_BASHRC.backup.$(date +%s)"
                 echo "Existing .bashrc backed up."
+                continue
             fi
         
             # Append only if not already added
             if ! grep -q "### PACKMAN START ###" "$TARGET_BASHRC"; then
                 cat >> "$TARGET_BASHRC"
+                continue
             EOF
         
         if [ -f "$HOME/packman/bashrc" ]; then
             source "$HOME/packman/bashrc"
+            continue
         fi
         
         EOF
