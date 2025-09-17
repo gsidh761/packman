@@ -31,6 +31,10 @@ if [ $# -lt 2 ]; then
     echo "  get packages:"
     echo "        Downloads a given package RPM but doesn't install it"
     echo ""
+    echo ""
+    echo "  uninstall packages:"
+    echo "        Uninstalls a package"
+    echo ""
     exit 1
 fi
 
@@ -46,10 +50,27 @@ case $1 in
             echo -e "$MARKER Installing (extracting) $package..."
             cd ~/rpm || exit 1
             dnf download "$package"
-            rpm2cpio ~/rpm/*.rpm | cpio -idmv
+            rpm2cpio "$package".rpm | cpio -idmv | tee ~/rpm/.packman/$package.files
             cd ..
         done
         ;;
+
+    uninstall)
+        shift
+        for package in "$@"; do
+            FILELIST=~/rpm/.packman/$package.files
+            if [ ! -f "$FILELIST" ]; then
+                echo -e "$MARKER No record of $package being installed."
+                continue
+            fi
+            echo -e "$MARKER Uninstalling $package..."
+            while read -r file; do
+                rm -f "$file"
+            done < "$FILELIST"
+            rm -f "$FILELIST"
+        done
+        ;;
+
     get)
         shift
         for package in "$@"; do
