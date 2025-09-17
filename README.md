@@ -8,6 +8,6 @@ Simply run:
     packman install [package_name]
 
 Run the downloaded package:
-    ./rpm/usr/bin/[package_name]
+    ```./rpm/usr/bin/[package_name]```
 
 This will download and install packages.
