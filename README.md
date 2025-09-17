@@ -18,3 +18,5 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
 **Run the installed package (while in the Packman project folder):**
     ```./rpm/usr/bin/[package_name]```
 
+**Todo:**
+1. Uninstall Packages
