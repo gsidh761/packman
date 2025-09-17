@@ -98,7 +98,6 @@ case $1 in
         rm -f "$FILELIST"
 
         echo -e "$MARKER $package fully removed."
-    done
     ;;
 
 
