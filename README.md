@@ -20,3 +20,4 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
 
 **Todo:**
 1. Uninstall Packages
+2. Run packages from anywhere 
