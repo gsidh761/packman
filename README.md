@@ -12,7 +12,7 @@ Note: Installed packages count towards your file quota limits (if applicable)
 
 1. Download Packman from Github
 2. Run `./packman install [package_name]`
-3. Run `./packman global` to run the packages from anywhere (Optional)
+3. Run `./packman global` to run any installed packages from anywhere (Optional)
    
 **Run Packages:**
 1. Run the package like any other commands (e.g. ls, cd) - First you will need to run global.sh
