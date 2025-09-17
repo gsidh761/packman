@@ -110,7 +110,7 @@ case $1 in
         fi
 
         if ! grep -q "### PACKMAN START ###" "$TARGET_BASHRC"; then
-            cat >> "$TARGET_BASHRC"<<'EOF'
+            cat >> "$TARGET_BASHRC" <<EOF
 
         if [ -f "$HOME/packman/bashrc" ]; then
             source "$HOME/packman/bashrc"
