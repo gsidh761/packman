@@ -44,7 +44,7 @@ case $1 in
         shift
         for package in "$@"; do
             echo -e "$MARKER Installing (extracting) $package..."
-            mkdir rpm && cd rpm || exit 1
+            cd rpm || exit 1
             dnf download "$package"
             rpm2cpio ./*.rpm | cpio -idmv
             cd ..
@@ -54,7 +54,7 @@ case $1 in
         shift
         for package in "$@"; do
             echo -e "$MARKER Getting $package..."
-            mkdir rpm && cd rpm || exit 1
+            cd rpm || exit 1
             dnf download "$package"
             cd ..
         done
