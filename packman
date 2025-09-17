@@ -112,19 +112,19 @@ case $1 in
         if ! grep -q "### PACKMAN START ###" "$TARGET_BASHRC"; then
             cat >> "$TARGET_BASHRC" <<-'EOF'
 
-    if [ -f "$HOME/packman/bashrc" ]; then
-        source "$HOME/packman/bashrc"
-    fi
-    EOF
-                echo "Packman bashrc added."
-            fi
-        else
-            echo "No bashrc found in repo."
+        if [ -f "$HOME/packman/bashrc" ]; then
+            source "$HOME/packman/bashrc"
         fi
-    
-        echo "Installation complete!"
-        source "$HOME/.bashrc"
-    ;;
+        EOF
+                    echo "Packman bashrc added."
+                fi
+            else
+                echo "No bashrc found in repo."
+            fi
+        
+            echo "Installation complete!"
+            source "$HOME/.bashrc"
+        ;;
 
     get)
         shift
