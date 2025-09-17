@@ -19,5 +19,5 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
     ```./rpm/usr/bin/[package_name]```
 
 **Todo:**
-1. Uninstall Packages
+1. Uninstall packages
 2. Run packages from anywhere 
