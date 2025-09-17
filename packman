@@ -53,7 +53,9 @@ case $1 in
             dnf download "$package"
             mkdir -p ~/rpm/.packman
             touch ~/rpm/.packman/$package.files
-            rpm2cpio *.rpm | cpio -idmv | tar -xvf package.rpm -C / | tee ~/rpm/.packman/$package.files
+            rpm2cpio "$package.rpm" | cpio -idmv -D / \
+                | sed 's|^|/|' \
+                | tee ~/rpm/.packman/$package.files
             cd ..
         done
         ;;
@@ -73,7 +75,7 @@ case $1 in
 
             # Remove extracted files
             while read -r file; do
-                rm -f "$file"
+                rm -f "/$file"
             done < "$FILELIST"
 
             rm -f "$PKGDIR"/*"$package"*.rpm
