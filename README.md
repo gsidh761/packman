@@ -10,14 +10,7 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
 
 1. Download Packman from Github
 2. Run `mkdir rpm` in the home directory ~/
-
-**Simply run:**
-
-    ./packman install [package_name]
-
-**Run the installed package (while in the Packman project folder):**
-    ```./rpm/usr/bin/[package_name]```
+3. Run ./packman install [package_name]
 
 **Todo:**
 1. Uninstall packages
-2. Run packages from anywhere 
