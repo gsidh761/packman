@@ -9,7 +9,7 @@ This avoids the need for root privileges and keeps your system clean, ideal for 
 **Installation:**
 
 1. Download Packman from Github
-2. Run mkdir rpm in the Packman folder
+2. Run `mkdir rpm` in the home directory ~/
 
 **Simply run:**
 
