@@ -61,34 +61,40 @@ case $1 in
         done
         ;;
 
-      uninstall)
-        shift
-        for package in "$@"; do
-            FILELIST=~/rpm/.packman/$package.files
-            PKGDIR=~/rpm
+     uninstall)
+    shift
+    for package in "$@"; do
+        FILELIST=~/rpm/.packman/$package.files
+        PKGDIR=~/rpm
 
-            if [ ! -f "$FILELIST" ]; then
-                echo -e "$MARKER No record of $package being installed."
-                continue
-            fi
+        if [ ! -f "$FILELIST" ]; then
+            echo -e "$MARKER No record of $package being installed."
+            continue
+        fi
 
-            echo -e "$MARKER Uninstalling $package..."
+        echo -e "$MARKER Uninstalling $package..."
 
-            # Remove extracted files
-            while read -r file; do
-                rm -f "$file"
-            done < "$FILELIST"
+        # Remove extracted files
+        while read -r file; do
+            rm -f "$file"
+            # Try to clean up empty parent dirs (up to ~/rpm)
+            dir=$(dirname "$file")
+            while [ "$dir" != "$PKGDIR" ] && [ "$dir" != "/" ]; do
+                rmdir --ignore-fail-on-non-empty "$dir" 2>/dev/null || true
+                dir=$(dirname "$dir")
+            done
+        done < "$FILELIST"
 
-            rm -f "~/rpm/"$package"*.rpm
+        # Remove RPM file
+        rm -f "$PKGDIR"/*"$package"*.rpm
 
-            find "$PKGDIR" -type d -empty -delete
+        # Remove the filelist record
+        rm -f "$FILELIST"
 
-            # Remove the filelist record
-            rm -f "$FILELIST"
+        echo -e "$MARKER $package fully removed."
+    done
+    ;;
 
-            echo -e "$MARKER $package fully removed."
-        done
-        ;;
 
 
     get)
