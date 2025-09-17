@@ -33,5 +33,3 @@ Note: Installed packages count towards your file quota limits
 **Search For Packages:**
 1. Cd into the Packman directory
 2. Run ./packman search [package_name]
-
-**Todo:**
