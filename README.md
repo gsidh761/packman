@@ -3,7 +3,7 @@
 
 ## Usage
 
-Simply run something like this:
+Simply run:
 
     packman install [package_name]
 
