@@ -35,4 +35,4 @@ Note: Installed packages count towards your file quota limits (if applicable)
 2. Run `./packman search [package_name]`
 
 **Todo:**
-1. Add support for downloading and installing deb files
+1. Add support for downloading and installing deb/rpm files
