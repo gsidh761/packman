@@ -15,7 +15,7 @@ Note: Installed packages count towards your file quota limits (if applicable)
 3. Run `./packman global` to run any installed packages from anywhere (Optional)
    
 **Run Packages:**
-1. Run the package like any other commands (e.g. ls, cd) - First you will need to run global.sh
+1. Run the package like any other commands (e.g. ls, cd) - First you will need to run ./packman global (if not done already)
 2. Run the package using `~/rpm/usr/local/bin/[package_name]`
 
 **Uninstall Packages:**
