@@ -12,7 +12,7 @@ Note: Installed packages count towards your file quota limits (if applicable)
 
 1. Download Packman from Github
 2. Run `./packman install [package_name]`
-3. Run `./packman global` to run any installed packages from anywhere (Optional)
+3. Run `./packman global` to run any installed packages from anywhere (Optional/Required Only Once)
    
 **Run Packages:**
 1. Run the package using `~/rpm/usr/local/bin/[package_name]`
