@@ -40,6 +40,21 @@ case $1 in
         done
         ;;
 
+       deb)
+        shift
+        for package in "$@"; do
+            echo -e "$MARKER Installing (extracting) $package..."
+            cd ~/rpm || exit 1
+            mkdir -p ~/rpm/.packman
+            touch ~/rpm/.packman/$package.files
+            rpm2cpio *.rpm | cpio -idmv
+            find ~/rpm/usr ~/rpm/etc ~/rpm/lib ~/rpm/bin ~/rpm/share -type f -o -type l 2>/dev/null \
+                | sed 's|^||' \
+                | tee ~/rpm/.packman/$package.files
+            cd ..
+        done
+        ;;
+
    uninstall)
     shift
     for package in "$@"; do
