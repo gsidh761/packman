@@ -124,7 +124,7 @@ EOF
         echo "No bashrc found in repo."
     fi
 
-    echo "Installation complete! You will be prompted to login again to apply the changes"
+    echo "Installation complete! You may be prompted to login to apply the changes"
     source "$HOME/.bashrc"
     bash --login
 ;;
