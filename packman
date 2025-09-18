@@ -40,9 +40,11 @@ case $1 in
         done
         ;;
 
-       deb)
+       file)
         shift
         for package in "$@"; do
+            # Check for file type and extract the package name from the URL.
+            curl $package --output $package
             echo -e "$MARKER Installing (extracting) $package..."
             cd ~/rpm || exit 1
             mkdir -p ~/rpm/.packman
