@@ -36,4 +36,5 @@ Note: Installed packages count towards your file quota limits (if applicable)
 
 **Todo:**
 1. Add support for downloading and installing deb/rpm files
-2. Only install the specified package instead of reinstalling all the packages 
+2. Only install the specified package instead of reinstalling all the packages
+3. No need for exact case matching for uninstalling
