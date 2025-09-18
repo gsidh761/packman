@@ -33,3 +33,6 @@ Note: Installed packages count towards your file quota limits (if applicable)
 **Search For Packages:**
 1. Cd into the Packman directory
 2. Run `./packman search [package_name]`
+
+**Todo:**
+1. Add support for downloading and installing deb files
