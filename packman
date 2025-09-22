@@ -5,14 +5,6 @@ MARKER='\033[1m[PACKMAN]\033[0m'
 cd "$DIR" || exit 1
 mkdir -p ~/rpm/ 
 
-# Detect yum
-if command -v yum >/dev/null 2>&1; then
-    MODE="yum"
-else
-    echo -e "$MARKER Could not find yum installed on this machine..."
-    exit 1
-fi
-
 # Ensure dnf exists for downloading
 if ! command -v dnf >/dev/null 2>&1; then
     echo -e "$MARKER Could not find dnf installed on this machine (needed for downloads)."
@@ -22,7 +14,7 @@ case $1 in
     search)
         shift
         echo -e "$MARKER Searching for: $*"
-        yum search "$@"
+        dnf search "$@"
         ;;
     install)
         shift
